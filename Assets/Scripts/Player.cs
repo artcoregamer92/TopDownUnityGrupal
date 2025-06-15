@@ -8,11 +8,10 @@ public class Player : MonoBehaviour
     private bool moviendo;
     private Vector3 puntoDestino;
     private Vector3 ultimoInput;
-    private Vector3 puntoInteraccion;
+    private Vector3 puntoInteraccion; 
     private Collider2D colliderDelante; //indica el collider que tenemos por delante.
     [SerializeField] private float velocidadMovimiento;
     [SerializeField] private float radioInteraccion;
-    [SerializeField] private LayerMask queEsColisionable;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -32,6 +31,12 @@ public class Player : MonoBehaviour
             inputV = Input.GetAxisRaw("Vertical");
         }
         
+        //Se agrega tecla 'E' para interactuar
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            LanzarInteraccion();
+        }
+        
         //Ejecutar movimiento solo si estoy en una casilla y solo si hay input
         if(!moviendo && (inputH!= 0 || inputV != 0))
         {
@@ -47,6 +52,20 @@ public class Player : MonoBehaviour
                 StartCoroutine(Mover());
             }            
         }             
+    }
+    
+    //Metodo para dialogos
+    private void LanzarInteraccion()
+    {
+        colliderDelante = LanzarCheck();
+        if (colliderDelante)
+        {
+            if (colliderDelante.gameObject.CompareTag("NPC"))
+            {
+                NPC npcScript = colliderDelante.gameObject.GetComponent<NPC>();
+                npcScript .Interactuar();
+            }
+        }
     }
 
     IEnumerator Mover()
@@ -65,7 +84,7 @@ public class Player : MonoBehaviour
 
     private Collider2D LanzarCheck()
     {
-        return Physics2D.OverlapCircle(puntoInteraccion, radioInteraccion, queEsColisionable);
+        return Physics2D.OverlapCircle(puntoInteraccion, radioInteraccion);
     }
 
     private void OnDrawGizmos()
