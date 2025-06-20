@@ -10,6 +10,9 @@ public class Player : MonoBehaviour
     private Vector3 ultimoInput;
     private Vector3 puntoInteraccion;
     private Collider2D colliderDelante; //indica el collider que tenemos por delante.
+
+    [SerializeField] private Animator animator;
+
     [SerializeField] private float velocidadMovimiento;
     [SerializeField] private float radioInteraccion;
     [SerializeField] private LayerMask queEsColisionable;
@@ -25,11 +28,15 @@ public class Player : MonoBehaviour
         if(inputV == 0)
         {
             inputH = Input.GetAxisRaw("Horizontal");
+            animator.SetFloat("VelX", inputH);
+            animator.SetFloat("VelY", 0);
         }
 
         if(inputH == 0)
         {
             inputV = Input.GetAxisRaw("Vertical");
+            animator.SetFloat("VelY", inputV);
+            animator.SetFloat("VelX", 0);
         }
         
         //Ejecutar movimiento solo si estoy en una casilla y solo si hay input
@@ -52,6 +59,9 @@ public class Player : MonoBehaviour
     IEnumerator Mover()
     {
         moviendo = true;
+
+        animator.SetBool("Move", true);
+
         while (transform.position != puntoDestino)
         {
             transform.position = Vector3.MoveTowards(transform.position, puntoDestino, velocidadMovimiento * Time.deltaTime);
@@ -61,6 +71,8 @@ public class Player : MonoBehaviour
         //Ante un nuevo destino, necesito refrescar de nuevo puntoInteraccion.
         puntoInteraccion = transform.position + ultimoInput;
         moviendo = false;
+
+        animator.SetBool("Move", false);
     }
 
     private Collider2D LanzarCheck()
