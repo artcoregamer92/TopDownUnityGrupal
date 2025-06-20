@@ -15,7 +15,8 @@ public class Player : MonoBehaviour
 
     [SerializeField] private float velocidadMovimiento;
     [SerializeField] private float radioInteraccion;
-    [SerializeField] private LayerMask queEsColisionable;
+    // se quita para interactuar con NPC
+    //[SerializeField] private LayerMask queEsColisionable;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -37,6 +38,12 @@ public class Player : MonoBehaviour
             inputV = Input.GetAxisRaw("Vertical");
             animator.SetFloat("VelY", inputV);
             animator.SetFloat("VelX", 0);
+        }
+        
+        //Se agrega tecla 'E' para interactuar con NPC
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            LanzarInteraccion();
         }
         
         //Ejecutar movimiento solo si estoy en una casilla y solo si hay input
@@ -77,11 +84,27 @@ public class Player : MonoBehaviour
 
     private Collider2D LanzarCheck()
     {
-        return Physics2D.OverlapCircle(puntoInteraccion, radioInteraccion, queEsColisionable);
+        // se quita por ajuste de NPC
+        //return Physics2D.OverlapCircle(puntoInteraccion, radioInteraccion, queEsColisionable);
+        return Physics2D.OverlapCircle(puntoInteraccion, radioInteraccion);
     }
 
     private void OnDrawGizmos()
     {
         Gizmos.DrawSphere(puntoInteraccion, radioInteraccion);
+    }
+    
+    //Metodo para dialogos con NPC
+    private void LanzarInteraccion()
+    {
+        colliderDelante = LanzarCheck();
+        if (colliderDelante)
+        {
+            if (colliderDelante.gameObject.CompareTag("NPC"))
+            {
+                NPC npcScript = colliderDelante.gameObject.GetComponent<NPC>();
+                npcScript .Interactuar();
+            }
+        }
     }
 }
