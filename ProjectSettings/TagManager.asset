@@ -5,15 +5,16 @@ TagManager:
   serializedVersion: 3
   tags:
   - NPC
+  - Pushable
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
   - Colisiones
-  - 
+  - Pushable
   - 
   - 
   - 

@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -50,17 +50,38 @@ public class Player : MonoBehaviour
         if(!moviendo && (inputH!= 0 || inputV != 0))
         {
             //actualizar cual fue mi ultimo input, cual va a ser mi puntoDestino y cual es mi puntoInteraccion.
+            // 1. Registrar input y posiciones de chequeo
             ultimoInput = new Vector3(inputH, inputV, 0);
             puntoDestino = transform.position + ultimoInput;
             puntoInteraccion = puntoDestino;
 
+            // 2. Mirar qué hay justo delante
             colliderDelante = LanzarCheck();
 
+            // 3.A Nada delante → avanza normal
             if (!colliderDelante)
             {
                 StartCoroutine(Mover());
-            }            
-        }             
+            }
+            // 3.B Hay algo y es Pushable → intenta empujarlo
+            else if (colliderDelante.CompareTag("Pushable"))
+            {
+                Vector3 destinoBloque = colliderDelante.transform.position + ultimoInput;
+
+                // ¿Está libre la casilla más allá del bloque?
+                if (!Physics2D.OverlapCircle(destinoBloque, radioInteraccion))
+                {
+                    // Mueve bloque y luego jugador, a la misma velocidad
+                    Pushable pushable = colliderDelante.GetComponent<Pushable>();
+                    pushable.moveSpeed = velocidadMovimiento;
+
+                    StartCoroutine(pushable.MoveTo(destinoBloque));
+                    StartCoroutine(Mover());
+                }
+            }
+            // 3.C Cualquier otra cosa (muro, NPC, límite) → no te mueves
+
+        }
     }
 
     IEnumerator Mover()
