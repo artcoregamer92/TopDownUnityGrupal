@@ -2,8 +2,9 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 
-public class NPC : MonoBehaviour
+public class NPC : MonoBehaviour, Interactuable
 {
+    [SerializeField] private GameManagerSO gameManager;
     [SerializeField, TextArea(1, 5)] private string[] frases;
     [SerializeField] private float tiempoDialogo;
     [SerializeField] private GameObject cuadroDialogo;
@@ -18,6 +19,7 @@ public class NPC : MonoBehaviour
 
     public void Interactuar()
     {
+        gameManager.CambiarEstadoPlayer(false);
         cuadroDialogo.SetActive(true);
         if (!hablando)
         {
@@ -70,6 +72,7 @@ public class NPC : MonoBehaviour
         textoDialogo.text = "";
         fraseActual = -1;
         cuadroDialogo.SetActive(false);
+        gameManager.CambiarEstadoPlayer(true);
     }
     
 }

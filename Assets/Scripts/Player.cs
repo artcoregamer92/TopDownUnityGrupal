@@ -18,7 +18,11 @@ public class Player : MonoBehaviour
     // se quita para interactuar con NPC
     //[SerializeField] private LayerMask queEsColisionable;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+   
+    private bool interactuando;
+    public bool Interactuando { get => interactuando; set => interactuando = value; }
+	
+	void Start()
     {
 
     }
@@ -47,7 +51,7 @@ public class Player : MonoBehaviour
         }
         
         //Ejecutar movimiento solo si estoy en una casilla y solo si hay input
-        if(!moviendo && (inputH!= 0 || inputV != 0))
+        if(!interactuando && !moviendo && (inputH!= 0 || inputV != 0))
         {
             //actualizar cual fue mi ultimo input, cual va a ser mi puntoDestino y cual es mi puntoInteraccion.
             // 1. Registrar input y posiciones de chequeo
@@ -121,10 +125,9 @@ public class Player : MonoBehaviour
         colliderDelante = LanzarCheck();
         if (colliderDelante)
         {
-            if (colliderDelante.gameObject.CompareTag("NPC"))
+            if (colliderDelante.TryGetComponent(out Interactuable interactuable))
             {
-                NPC npcScript = colliderDelante.gameObject.GetComponent<NPC>();
-                npcScript .Interactuar();
+                interactuable.Interactuar();
             }
         }
     }
