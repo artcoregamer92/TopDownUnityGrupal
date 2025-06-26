@@ -314,6 +314,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 214460065}
+  - component: {fileID: 214460068}
   - component: {fileID: 214460067}
   - component: {fileID: 214460066}
   m_Layer: 0
@@ -332,7 +333,7 @@ Transform:
   m_GameObject: {fileID: 214460064}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.55, y: -0.48, z: 0}
+  m_LocalPosition: {x: 2.5, y: -0.5, z: 0}
   m_LocalScale: {x: 6.1354, y: 6.1354, z: 6.1354}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -439,6 +440,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &214460068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 214460064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bea98042d29a0eb49b88bac3220c2688, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  misDatos: {fileID: 11400000, guid: 9642894ede2cd284eb954f6d50147c31, type: 2}
+  gameManager: {fileID: 11400000, guid: 9fced4a76d9d96e4bb15f0cd77d3f6ca, type: 2}
 --- !u!1 &235625544
 GameObject:
   m_ObjectHideFlags: 0
@@ -5006,7 +5021,7 @@ Transform:
   m_GameObject: {fileID: 1076166716}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.5, y: -0.48, z: 0}
+  m_LocalPosition: {x: -2.5, y: -0.5, z: 0}
   m_LocalScale: {x: 6.1354, y: 6.1354, z: 6.1354}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5126,7 +5141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   misDatos: {fileID: 11400000, guid: a26fe7d1374feda4e96a24c8df78fcde, type: 2}
-  gameManager: {fileID: 0}
+  gameManager: {fileID: 11400000, guid: 9fced4a76d9d96e4bb15f0cd77d3f6ca, type: 2}
 --- !u!1 &1081474722
 GameObject:
   m_ObjectHideFlags: 0
@@ -6212,6 +6227,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c315fddf12f7784eb09f2f2fa53d746, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 11400000, guid: 9fced4a76d9d96e4bb15f0cd77d3f6ca, type: 2}
   frases:
   - Hola Viajero!
   - Estas tierras son gobernadas por el Dios Antiguo, es muy peligroso!
@@ -7222,6 +7238,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2033895168}
+  - component: {fileID: 2033895171}
   - component: {fileID: 2033895169}
   - component: {fileID: 2033895170}
   m_Layer: 0
@@ -7240,7 +7257,7 @@ Transform:
   m_GameObject: {fileID: 2033895167}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.5, y: -3.49, z: 0}
+  m_LocalPosition: {x: -3.5, y: -3.5, z: 0}
   m_LocalScale: {x: 6.1354, y: 6.1354, z: 6.1354}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7347,6 +7364,20 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.16, y: 0.16}
   m_EdgeRadius: 0
+--- !u!114 &2033895171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2033895167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bea98042d29a0eb49b88bac3220c2688, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  misDatos: {fileID: 11400000, guid: d320ab75b4216c44483d135726692499, type: 2}
+  gameManager: {fileID: 11400000, guid: 9fced4a76d9d96e4bb15f0cd77d3f6ca, type: 2}
 --- !u!1 &2036178851
 GameObject:
   m_ObjectHideFlags: 0
