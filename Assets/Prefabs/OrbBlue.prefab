@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8068213083626534939}
+  - component: {fileID: 6209649707707308713}
   - component: {fileID: 8704941450288297368}
   - component: {fileID: 8664391391856771628}
   m_Layer: 0
@@ -33,6 +34,28 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6209649707707308713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3851987494461519889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3ad15e469c29e9498f43aee3c08090b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  portals:
+  - tile: {fileID: 11400000, guid: 5d5b9da8232b68942a66a907f3915f5a, type: 2}
+    targetScene: Mine
+    spawnPointName: Spawn_From_Mine
+  - tile: {fileID: 0}
+    targetScene: 
+    spawnPointName: 
+  - tile: {fileID: 0}
+    targetScene: 
+    spawnPointName: 
 --- !u!212 &8704941450288297368
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -77,7 +100,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 03689c0f1f35b41c5bceb785885fe716, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -85,7 +108,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &8664391391856771628
