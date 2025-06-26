@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -20,11 +21,38 @@ public class Player : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
    
     private bool interactuando;
+
+    [SerializeField] private GameManagerSO gameManager;
     public bool Interactuando { get => interactuando; set => interactuando = value; }
 	
 	void Start()
     {
+        DontDestroyOnLoad(gameObject);
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
 
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        transform.position = gameManager.SpawnPoint.transform.position;
+
+        GameObject[] jugadores = GameObject.FindGameObjectsWithTag("Player");
+
+        foreach (GameObject jugador in jugadores)
+        {
+            if (jugador != this.gameObject)
+            {
+                Destroy(jugador);
+            }
+        }
+        StopAllCoroutines();
+        inputH = 0;
+        inputV = 0;
+        puntoDestino = transform.position;
+        puntoInteraccion = transform.position;
+        ultimoInput = Vector3.zero;
+        moviendo = false;
+        animator.SetBool("Move", false);
     }
 
     // Update is called once per frame
@@ -63,7 +91,7 @@ public class Player : MonoBehaviour
             colliderDelante = LanzarCheck();
 
             // 3.A Nada delante → avanza normal
-            if (!colliderDelante)
+            if (!colliderDelante || colliderDelante.CompareTag("Entrada"))
             {
                 StartCoroutine(Mover());
             }
