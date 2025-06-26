@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5099d0c9e518064197a5abf7ddc06bc, type: 3}
   m_Name: GameManager
   m_EditorClassIdentifier: 
-  modoTesteo: 0
+  modoTesteo: 1
   estadoItems:
   - item: {fileID: 11400000, guid: d320ab75b4216c44483d135726692499, type: 2}
     recogido: 1
