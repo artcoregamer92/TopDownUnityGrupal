@@ -15,12 +15,6 @@ public class Player : MonoBehaviour
 
     [SerializeField] private float velocidadMovimiento;
     [SerializeField] private float radioInteraccion;
-
-    private bool interactuando;
-
-    public bool Interactuando { get => interactuando; set => interactuando = value; }
-
-
     // se quita para interactuar con NPC
     //[SerializeField] private LayerMask queEsColisionable;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -53,7 +47,7 @@ public class Player : MonoBehaviour
         }
         
         //Ejecutar movimiento solo si estoy en una casilla y solo si hay input
-        if(!interactuando && !moviendo && (inputH!= 0 || inputV != 0))
+        if(!moviendo && (inputH!= 0 || inputV != 0))
         {
             //actualizar cual fue mi ultimo input, cual va a ser mi puntoDestino y cual es mi puntoInteraccion.
             ultimoInput = new Vector3(inputH, inputV, 0);
@@ -106,11 +100,11 @@ public class Player : MonoBehaviour
         colliderDelante = LanzarCheck();
         if (colliderDelante)
         {
-            if (colliderDelante.TryGetComponent(out Interactuable interactuable))
+            if (colliderDelante.gameObject.CompareTag("NPC"))
             {
-                interactuable.Interactuar();
+                NPC npcScript = colliderDelante.gameObject.GetComponent<NPC>();
+                npcScript .Interactuar();
             }
-            
         }
     }
 }
