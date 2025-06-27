@@ -22,5 +22,7 @@ MonoBehaviour:
     recogido: 0
   - item: {fileID: 11400000, guid: 9642894ede2cd284eb954f6d50147c31, type: 2}
     recogido: 0
+  - item: {fileID: 11400000, guid: 23ff1db8e0e37284d95f9b983d517baa, type: 2}
+    recogido: 1
   SpawnName: Spawn
   SpawnPoint: {fileID: 0}
