@@ -9,6 +9,8 @@ TagManager:
   - Entrada
   - Canvas
   - Door
+  - Dialogo
+  - TextoDialogo
   layers:
   - Default
   - TransparentFX

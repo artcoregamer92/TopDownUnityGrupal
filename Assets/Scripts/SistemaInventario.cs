@@ -10,8 +10,9 @@ public class SistemaInventario : MonoBehaviour
     private int itemsDisponibles = 0;
 
 
-
+    [SerializeField] private GameManagerSO gameManager;
     [SerializeField] private GameObject panelCombinacion;
+    [SerializeField] private GameObject panelPapiro;
     [SerializeField] private Button slot1;
     [SerializeField] private Button slot2;
     [SerializeField] private TextMeshProUGUI mensajeCombinacion;
@@ -53,11 +54,28 @@ public class SistemaInventario : MonoBehaviour
         // Guardar el item en el array
         inventarioActual[itemsDisponibles] = item;
 
+        if(item.nombre == "Botas")
+        {
+            gameManager.UpgradeVelocidad();
+        }
+
         // Añadir callback para selección
         int index = itemsDisponibles;
         Botones[itemsDisponibles].onClick.AddListener(() => SeleccionarItemParaCombinar(index));
 
+        if (item.nombre == "Paper")
+        {
+            //AbrirPanelPapiro();
+            Botones[itemsDisponibles].onClick.AddListener(() => AbrirPanelPapiro());
+        }
+
+
         itemsDisponibles++;
+    }
+
+    public void AbrirPanelPapiro()
+    {
+        panelPapiro.SetActive(true);
     }
 
     public void AbrirPanelDeCombinacion()
@@ -106,7 +124,7 @@ public class SistemaInventario : MonoBehaviour
             (objetoSeleccionado1 == orbeSO && objetoSeleccionado2 == llaveSO)
         )
         {
-            // ✅ Combinación correcta → eliminar objetos y agregar nueva llave verde
+            //  Combinación correcta → eliminar objetos y agregar nueva llave verde
             mensajeCombinacion.text = "¡COMBINADOS!";
 
             EliminarItemDelInventario(objetoSeleccionado1);

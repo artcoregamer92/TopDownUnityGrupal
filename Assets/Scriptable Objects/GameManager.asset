@@ -15,12 +15,12 @@ MonoBehaviour:
   modoTesteo: 1
   estadoItems:
   - item: {fileID: 11400000, guid: d320ab75b4216c44483d135726692499, type: 2}
-    recogido: 1
+    recogido: 0
   - item: {fileID: 11400000, guid: 9486c61b150ca4245a90f32008513e75, type: 2}
-    recogido: 1
+    recogido: 0
   - item: {fileID: 11400000, guid: a26fe7d1374feda4e96a24c8df78fcde, type: 2}
-    recogido: 1
+    recogido: 0
   - item: {fileID: 11400000, guid: 9642894ede2cd284eb954f6d50147c31, type: 2}
-    recogido: 1
+    recogido: 0
   SpawnName: Spawn
   SpawnPoint: {fileID: 0}

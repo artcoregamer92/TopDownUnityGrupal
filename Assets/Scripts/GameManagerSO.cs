@@ -75,6 +75,9 @@ public class GameManagerSO : ScriptableObject
         {
             player.Interactuando = !estado;
         }
-    
+    public void UpgradeVelocidad()
+    {
+        player.VelocidadMovimiento = 5;
+    }
 
 }

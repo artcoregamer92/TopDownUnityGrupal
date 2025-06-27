@@ -33,8 +33,7 @@ public class PressureButton : MonoBehaviour
         if (objectsOnTop == 0) Release(); // se fue el último
     }
 
-    bool IsActivator(Collider2D col) =>
-        (activatorMask.value & (1 << col.gameObject.layer)) != 0;
+    bool IsActivator(Collider2D col) =>(activatorMask.value & (1 << col.gameObject.layer)) != 0;
 
     void Press()
     {

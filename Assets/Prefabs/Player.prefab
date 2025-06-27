@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 305344646236380266}
-  velocidadMovimiento: 5
+  velocidadMovimiento: 3
   radioInteraccion: 0.3
   gameManager: {fileID: 11400000, guid: 9fced4a76d9d96e4bb15f0cd77d3f6ca, type: 2}
 --- !u!212 &8376855425722286242
@@ -105,7 +105,7 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
+  m_MaskInteraction: 2
   m_SpriteSortPoint: 0
 --- !u!61 &1952792741453578666
 BoxCollider2D:
