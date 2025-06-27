@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManagerSO : ScriptableObject
 {
-    [ContextMenu("Reiniciar ítems recogidos")]
+    [ContextMenu("Reiniciar ï¿½tems recogidos")]
 
     public void ReiniciarRecogidos()
     {
@@ -78,6 +78,12 @@ public class GameManagerSO : ScriptableObject
     public void UpgradeVelocidad()
     {
         player.VelocidadMovimiento = 5;
+    }
+    
+    //metodo para consultar si se recogio llave en el inventario
+    public bool validateKey()
+    {
+        return inventario.GetHaveKey();
     }
 
 }

@@ -18,7 +18,7 @@ public class SistemaInventario : MonoBehaviour
     [SerializeField] private TextMeshProUGUI mensajeCombinacion;
     [SerializeField] private ItemSO llaveSO, orbeSO, llaveVerdeSO;
 
-
+    private bool haveKey = false;
     private ItemSO objetoSeleccionado1 = null;
     private ItemSO objetoSeleccionado2 = null;
     private ItemSO[] inventarioActual = new ItemSO[10]; // si tienes 10 slots
@@ -59,6 +59,12 @@ public class SistemaInventario : MonoBehaviour
             gameManager.UpgradeVelocidad();
         }
 
+        // cuando se recoge la llave se actualiza bool
+        if(item.nombre == "Key")
+        {
+            haveKey = true;
+        }
+        
         // Añadir callback para selección
         int index = itemsDisponibles;
         Botones[itemsDisponibles].onClick.AddListener(() => SeleccionarItemParaCombinar(index));
@@ -158,5 +164,10 @@ public class SistemaInventario : MonoBehaviour
     {
         panelCombinacion.SetActive(false);
     }
-
+    
+    //getter para consultar si se recogio la llave
+    public bool GetHaveKey()
+    {
+        return haveKey;
+    }
 }

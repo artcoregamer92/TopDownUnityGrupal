@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 
 public class Chest : MonoBehaviour, Interactuable
@@ -22,8 +23,12 @@ public class Chest : MonoBehaviour, Interactuable
     
     public void Interactuar()
     {
-        animator.SetBool("Open", true);
-        StartCoroutine(GetChestItem());
+        //valida si el jugador ya tiene la llave
+        if (gameManager.validateKey() == true)
+        {
+            animator.SetBool("Open", true);
+            StartCoroutine(GetChestItem()); 
+        }
     }
 
     IEnumerator GetChestItem()
@@ -36,4 +41,6 @@ public class Chest : MonoBehaviour, Interactuable
             itemDropped = true;
         }
     }
+    
+
 }
