@@ -8,6 +8,9 @@ TagManager:
   - Pushable
   - Entrada
   - Canvas
+  - Door
+  - Dialogo
+  - TextoDialogo
   layers:
   - Default
   - TransparentFX
@@ -17,8 +20,8 @@ TagManager:
   - UI
   - Colisiones
   - Pushable
-  - 
-  - 
+  - Blocking
+  - Interactable
   - 
   - 
   - 

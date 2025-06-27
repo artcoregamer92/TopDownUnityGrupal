@@ -24,8 +24,9 @@ public class Player : MonoBehaviour
 
     [SerializeField] private GameManagerSO gameManager;
     public bool Interactuando { get => interactuando; set => interactuando = value; }
-	
-	void Start()
+    public float VelocidadMovimiento { get => velocidadMovimiento; set => velocidadMovimiento = value; }
+
+    void Start()
     {
         DontDestroyOnLoad(gameObject);
         SceneManager.sceneLoaded += OnSceneLoaded;

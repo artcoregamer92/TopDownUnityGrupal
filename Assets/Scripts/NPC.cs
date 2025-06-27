@@ -12,9 +12,13 @@ public class NPC : MonoBehaviour, Interactuable
     private bool hablando = false;
     private int fraseActual = -1;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
-        
+        if (DontDestroyOnload.Instance != null)
+        {
+            cuadroDialogo = DontDestroyOnload.Instance.cuadroDialogo;
+            textoDialogo = DontDestroyOnload.Instance.textoDialogo;
+        }
     }
 
     public void Interactuar()
