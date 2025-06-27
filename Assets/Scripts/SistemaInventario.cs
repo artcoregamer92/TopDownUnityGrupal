@@ -58,12 +58,6 @@ public class SistemaInventario : MonoBehaviour
         {
             gameManager.UpgradeVelocidad();
         }
-
-        // cuando se recoge la llave se actualiza bool
-        if(item.nombre == "Key")
-        {
-            haveKey = true;
-        }
         
         // Añadir callback para selección
         int index = itemsDisponibles;
@@ -136,6 +130,8 @@ public class SistemaInventario : MonoBehaviour
             EliminarItemDelInventario(objetoSeleccionado1);
             EliminarItemDelInventario(objetoSeleccionado2);
             NuevoItem(llaveVerdeSO);
+            // cuando se combina la llave se actualiza bool para el cofre
+            haveKey = true;
         }
         else
         {
